@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Criar conta — COVIA</title>
+  <meta name="description" content="Crie a sua conta COVIA e desbloqueie ofertas exclusivas em massage guns." />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #f7f3ec;
+      color: #141414;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      line-height: 1.5;
+    }
+    .wrap { width: 100%; max-width: 440px; }
+    .brand {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .brand a {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #141414;
+      text-decoration: none;
+    }
+    .brand .dot { color: #b8a07e; }
+    .card {
+      background: #ffffff;
+      border: 1px solid #e3dccf;
+      border-radius: 16px;
+      padding: 32px 28px;
+      box-shadow: 0 10px 40px -20px rgba(0,0,0,0.15);
+    }
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .subtitle {
+      color: #666;
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .field { margin-bottom: 16px; }
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #2a2a2a;
+    }
+    input {
+      width: 100%;
+      height: 44px;
+      padding: 0 14px;
+      font-size: 15px;
+      border: 1px solid #d8d2c4;
+      border-radius: 10px;
+      background: #fafaf7;
+      color: #141414;
+      outline: none;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    input:focus {
+      border-color: #141414;
+      background: #ffffff;
+    }
+    .btn {
+      width: 100%;
+      height: 48px;
+      background: #141414;
+      color: #f7f3ec;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .btn:hover { background: #2a2a2a; transform: translateY(-1px); }
+    .footer-link {
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      margin-top: 22px;
+    }
+    .footer-link a {
+      color: #141414;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid #b8a07e;
+    }
+    .footer-link a:hover { color: #b8a07e; }
+    .terms {
+      font-size: 12px;
+      color: #888;
+      text-align: center;
+      margin-top: 14px;
+    }
+    .back {
+      display: inline-block;
+      margin-top: 20px;
+      text-align: center;
+      width: 100%;
+      font-size: 13px;
+      color: #666;
+      text-decoration: none;
+    }
+    .back:hover { color: #141414; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <a href="/">COVIA<span class="dot">.</span></a>
+    </div>
+    <div class="card">
+      <h1>Criar conta</h1>
+      <p class="subtitle">Junte-se à COVIA</p>
+      <form action="#" method="post">
+        <div class="field">
+          <label for="fullName">Nome completo</label>
+          <input type="text" id="fullName" name="fullName" placeholder="João Silva" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+        </div>
+        <div class="field">
+          <label for="phone">Número de telefone</label>
+          <input type="tel" id="phone" name="phone" placeholder="+244 9XX XXX XXX" required />
+        </div>
+        <div class="field">
+          <label for="password">Senha</label>
+          <input type="password" id="password" name="password" placeholder="Mínimo 8 caracteres" minlength="8" required />
+        </div>
+        <button type="submit" class="btn">Criar conta</button>
+        <p class="terms">Ao registar, aceita os termos e a política de privacidade.</p>
+      </form>
+      <p class="footer-link">
+        Já tem conta? <a href="/login.html">Iniciar sessão</a>
+      </p>
+    </div>
+    <a href="/" class="back">← Voltar à loja</a>
+  </div>
+</body>
+</html>
