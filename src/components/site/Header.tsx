@@ -76,9 +76,9 @@ export const Header = () => {
               className="hidden md:inline-flex"
               asChild
             >
-              <Link to="/login">
+              <a href="/login.html">
                 <User className="h-5 w-5" />
-              </Link>
+              </a>
             </Button>
             <Button variant="ghost" size="icon" aria-label="Carrinho" onClick={() => setOpen(true)} className="relative">
               <ShoppingBag className="h-5 w-5" />
