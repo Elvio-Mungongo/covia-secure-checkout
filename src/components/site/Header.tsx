@@ -69,8 +69,16 @@ export const Header = () => {
             <Button variant="ghost" size="icon" aria-label="Favoritos" className="hidden md:inline-flex">
               <Heart className="h-5 w-5" />
             </Button>
-            <Button variant="ghost" size="icon" aria-label="Conta" className="hidden md:inline-flex">
-              <User className="h-5 w-5" />
+            <Button
+              variant="ghost"
+              size="icon"
+              aria-label="Conta"
+              className="hidden md:inline-flex"
+              asChild
+            >
+              <Link to="/login">
+                <User className="h-5 w-5" />
+              </Link>
             </Button>
             <Button variant="ghost" size="icon" aria-label="Carrinho" onClick={() => setOpen(true)} className="relative">
               <ShoppingBag className="h-5 w-5" />
