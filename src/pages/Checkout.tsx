@@ -10,6 +10,9 @@ import {
   MessageCircle,
   Building2,
   Smartphone,
+  Wallet,
+  CreditCard,
+  Banknote,
   Loader2,
 } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
@@ -20,26 +23,57 @@ import { useCart } from "@/context/CartContext";
 import { toast } from "sonner";
 import { buildWhatsAppUrl, formatKz, generateOrderId, WHATSAPP_NUMBER } from "@/lib/format";
 
-// --- Manual payment references shown to the customer ---
+// --- Manual payment methods for Angola ---
+// Each method includes: bank name, account number, and account holder
 const PAYMENT_METHODS = [
   {
-    id: "transfer",
-    Icon: Building2,
-    label: "Transferência bancária",
+    id: "express",
+    Icon: CreditCard,
+    label: "Express",
+    color: "bg-orange-500/10 text-orange-600",
     fields: [
-      { k: "Banco", v: "BAI — Banco Angolano de Investimentos" },
-      { k: "Titular", v: "COVIA Angola, Lda." },
-      { k: "IBAN", v: "AO06 0040 0000 1234 5678 9012 3" },
+      { k: "Número", v: "976434263" },
+      { k: "Titular", v: "JOSUÉ GERALDO MATADI CASSIANGULO" },
     ],
   },
   {
-    id: "multicaixa",
-    Icon: Smartphone,
-    label: "Multicaixa Express",
+    id: "bfa",
+    Icon: Building2,
+    label: "BFA — Banco de Fomento Angola",
+    color: "bg-blue-500/10 text-blue-600",
     fields: [
-      { k: "Número", v: "+244 955 397 803" },
-      { k: "Titular", v: "COVIA Angola" },
-      { k: "Referência", v: "Usa o teu nº de pedido" },
+      { k: "Conta", v: "000600004480099430175" },
+      { k: "Titular", v: "JOSUÉ GERALDO MATADI CASSIANGULO" },
+    ],
+  },
+  {
+    id: "sol",
+    Icon: Banknote,
+    label: "SOL — Banco Sol",
+    color: "bg-green-500/10 text-green-600",
+    fields: [
+      { k: "Conta", v: "004400003516825614177" },
+      { k: "Titular", v: "JOSUÉ GERALDO MATADI CASSIANGULO" },
+    ],
+  },
+  {
+    id: "bci",
+    Icon: Wallet,
+    label: "BCI — Banco de Comércio e Indústria",
+    color: "bg-purple-500/10 text-purple-600",
+    fields: [
+      { k: "Conta", v: "000500000675994710212" },
+      { k: "Titular", v: "JOSUÉ GERALDO MATADI CASSIANGULO" },
+    ],
+  },
+  {
+    id: "bai",
+    Icon: Building2,
+    label: "BAI — Banco Angolano de Investimentos",
+    color: "bg-red-500/10 text-red-600",
+    fields: [
+      { k: "Conta", v: "004000005757854410130" },
+      { k: "Titular", v: "ELVIO TREIA CAMANHA MUNGONGO" },
     ],
   },
 ];
@@ -174,16 +208,16 @@ const Checkout = () => {
             </p>
 
             <div className="space-y-4">
-              {PAYMENT_METHODS.map(({ id, Icon, label, fields }) => (
+              {PAYMENT_METHODS.map(({ id, Icon, label, color, fields }) => (
                 <div
                   key={id}
-                  className="rounded-xl border border-border p-5 hover:border-accent/50 transition-colors"
+                  className="rounded-xl border border-border p-5 hover:border-accent/50 transition-colors bg-secondary/20"
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="h-10 w-10 rounded-lg bg-accent/10 grid place-items-center">
-                      <Icon className="h-5 w-5 text-accent" />
+                    <div className={`h-10 w-10 rounded-lg grid place-items-center ${color}`}>
+                      <Icon className="h-5 w-5" />
                     </div>
-                    <div className="font-semibold">{label}</div>
+                    <div className="font-semibold text-primary">{label}</div>
                   </div>
                   <dl className="space-y-2 text-sm">
                     {fields.map((f) => (
@@ -191,14 +225,14 @@ const Checkout = () => {
                         key={f.k}
                         className="flex items-center justify-between gap-3 py-2 border-b border-border/50 last:border-0"
                       >
-                        <dt className="text-muted-foreground text-xs uppercase tracking-wider">
+                        <dt className="text-muted-foreground text-xs uppercase tracking-wider shrink-0">
                           {f.k}
                         </dt>
-                        <dd className="flex items-center gap-2 font-mono text-sm text-right">
-                          <span className="truncate">{f.v}</span>
+                        <dd className="flex items-center gap-2 font-mono text-sm text-right min-w-0">
+                          <span className="truncate text-primary">{f.v}</span>
                           <button
                             onClick={() => copy(f.v, `${id}-${f.k}`)}
-                            className="text-muted-foreground hover:text-accent shrink-0"
+                            className="text-muted-foreground hover:text-accent shrink-0 transition-colors"
                             aria-label={`Copiar ${f.k}`}
                           >
                             {copied === `${id}-${f.k}` ? (
