@@ -5,7 +5,7 @@ const items = [
   "GARANTIA COVIA ATÉ 3 ANOS",
   "7 DIAS PARA DEVOLUÇÃO",
   "PAGAMENTO 100% SEGURO",
-  "ENVIO GRÁTIS ACIMA DE €99",
+  "ENVIO GRÁTIS ACIMA DE 30.000 KZ",
 ];
 
 export const AnnouncementMarquee = () => (
