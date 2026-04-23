@@ -3,6 +3,7 @@ import { Star, ShoppingBag } from "lucide-react";
 import { Product } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
+import { formatKz } from "@/lib/format";
 
 export const ProductCard = ({ product }: { product: Product }) => {
   const { add } = useCart();
@@ -37,9 +38,9 @@ export const ProductCard = ({ product }: { product: Product }) => {
         <p className="text-xs text-muted-foreground">{product.tagline}</p>
         <div className="flex items-center justify-between pt-2">
           <div>
-            <span className="font-display text-2xl font-bold text-primary">€{product.price}</span>
+            <span className="font-display text-xl font-bold text-primary">{formatKz(product.price)}</span>
             {product.oldPrice && (
-              <span className="ml-2 text-sm text-muted-foreground line-through">€{product.oldPrice}</span>
+              <span className="ml-2 text-xs text-muted-foreground line-through">{formatKz(product.oldPrice)}</span>
             )}
           </div>
           <Button size="icon" variant="hero" onClick={() => add(product)} aria-label="Adicionar ao carrinho">

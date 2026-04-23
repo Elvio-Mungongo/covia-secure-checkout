@@ -81,8 +81,8 @@ export const Hero = () => {
           {/* badge */}
           <div className="absolute -bottom-6 left-6 bg-background rounded-2xl shadow-elegant px-5 py-3 border border-border">
             <div className="text-[10px] uppercase tracking-widest text-muted-foreground">A partir de</div>
-            <div className="font-display text-2xl font-bold text-primary">
-              €119<span className="text-sm text-muted-foreground line-through ml-2">€159</span>
+            <div className="font-display text-xl font-bold text-primary">
+              15.000 Kz<span className="text-xs text-muted-foreground line-through ml-2">20.000 Kz</span>
             </div>
           </div>
           <div className="absolute top-6 right-6 h-24 w-24 rounded-full bg-accent text-accent-foreground grid place-items-center shadow-gold rotate-12">
