@@ -3,6 +3,7 @@ import { useCart } from "@/context/CartContext";
 import { Button } from "@/components/ui/button";
 import { Minus, Plus, Trash2, ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
+import { formatKz } from "@/lib/format";
 
 export const CartDrawer = () => {
   const { items, open, setOpen, setQty, remove, subtotal } = useCart();
@@ -34,7 +35,7 @@ export const CartDrawer = () => {
                   />
                   <div className="flex-1 min-w-0">
                     <div className="font-semibold text-sm truncate">{it.product.name}</div>
-                    <div className="text-accent font-display text-lg font-bold">€{it.product.price}</div>
+                    <div className="text-accent font-display text-base font-bold">{formatKz(it.product.price)}</div>
                     <div className="flex items-center gap-2 mt-1">
                       <button
                         onClick={() => setQty(it.product.id, it.quantity - 1)}
@@ -68,13 +69,13 @@ export const CartDrawer = () => {
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-muted-foreground">Subtotal</span>
-                <span className="font-display text-2xl font-bold text-primary">€{subtotal.toFixed(2)}</span>
+                <span className="font-display text-xl font-bold text-primary">{formatKz(subtotal)}</span>
               </div>
               <Button asChild variant="hero" size="lg" className="w-full" onClick={() => setOpen(false)}>
-                <Link to="/checkout">Finalizar compra →</Link>
+                <Link to="/checkout">Pagar via WhatsApp →</Link>
               </Button>
               <p className="text-[10px] text-center text-muted-foreground">
-                Envio calculado no checkout. Pedido confirmado apenas após pagamento aprovado.
+                Pedido confirmado apenas após envio do comprovativo de pagamento.
               </p>
             </div>
           </>

@@ -7,6 +7,7 @@ import { getProduct, products } from "@/data/products";
 import { ProductCard } from "@/components/site/ProductCard";
 import { useCart } from "@/context/CartContext";
 import { useNavigate } from "react-router-dom";
+import { formatKz } from "@/lib/format";
 
 const Product = () => {
   const { slug } = useParams();
@@ -67,14 +68,14 @@ const Product = () => {
               <span className="text-sm text-muted-foreground">({product.reviews} avaliações)</span>
             </div>
 
-            <div className="flex items-baseline gap-3">
-              <span className="font-display text-4xl font-bold text-primary">€{product.price}</span>
+            <div className="flex items-baseline gap-3 flex-wrap">
+              <span className="font-display text-4xl font-bold text-primary">{formatKz(product.price)}</span>
               {product.oldPrice && (
-                <span className="text-lg text-muted-foreground line-through">€{product.oldPrice}</span>
+                <span className="text-lg text-muted-foreground line-through">{formatKz(product.oldPrice)}</span>
               )}
               {product.oldPrice && (
                 <span className="bg-success/10 text-success text-xs font-bold px-2 py-1 rounded">
-                  Poupa €{product.oldPrice - product.price}
+                  Poupa {formatKz(product.oldPrice - product.price)}
                 </span>
               )}
             </div>
