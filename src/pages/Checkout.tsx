@@ -208,16 +208,16 @@ const Checkout = () => {
             </p>
 
             <div className="space-y-4">
-              {PAYMENT_METHODS.map(({ id, Icon, label, fields }) => (
+              {PAYMENT_METHODS.map(({ id, Icon, label, color, fields }) => (
                 <div
                   key={id}
-                  className="rounded-xl border border-border p-5 hover:border-accent/50 transition-colors"
+                  className="rounded-xl border border-border p-5 hover:border-accent/50 transition-colors bg-secondary/20"
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="h-10 w-10 rounded-lg bg-accent/10 grid place-items-center">
-                      <Icon className="h-5 w-5 text-accent" />
+                    <div className={`h-10 w-10 rounded-lg grid place-items-center ${color}`}>
+                      <Icon className="h-5 w-5" />
                     </div>
-                    <div className="font-semibold">{label}</div>
+                    <div className="font-semibold text-primary">{label}</div>
                   </div>
                   <dl className="space-y-2 text-sm">
                     {fields.map((f) => (
@@ -225,14 +225,14 @@ const Checkout = () => {
                         key={f.k}
                         className="flex items-center justify-between gap-3 py-2 border-b border-border/50 last:border-0"
                       >
-                        <dt className="text-muted-foreground text-xs uppercase tracking-wider">
+                        <dt className="text-muted-foreground text-xs uppercase tracking-wider shrink-0">
                           {f.k}
                         </dt>
-                        <dd className="flex items-center gap-2 font-mono text-sm text-right">
-                          <span className="truncate">{f.v}</span>
+                        <dd className="flex items-center gap-2 font-mono text-sm text-right min-w-0">
+                          <span className="truncate text-primary">{f.v}</span>
                           <button
                             onClick={() => copy(f.v, `${id}-${f.k}`)}
-                            className="text-muted-foreground hover:text-accent shrink-0"
+                            className="text-muted-foreground hover:text-accent shrink-0 transition-colors"
                             aria-label={`Copiar ${f.k}`}
                           >
                             {copied === `${id}-${f.k}` ? (
