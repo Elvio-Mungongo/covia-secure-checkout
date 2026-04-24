@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard — COVIA Admin</title>
+  <title>Admin Dashboard — COVIA</title>
   <link rel="stylesheet" href="/admin/assets/admin.css" />
 </head>
 <body>
@@ -17,27 +17,27 @@
       </div>
       <nav class="sidebar__nav">
         <span class="sidebar__label">Geral</span>
-        <a href="/admin/dashboard.html" class="sidebar__link is-active">
+        <a class="sidebar__link is-active" data-tab="overview">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
           Dashboard
         </a>
-        <a href="/admin/products.html" class="sidebar__link">
+        <a class="sidebar__link" data-tab="products">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7L12 3 4 7l8 4 8-4z"/><path d="M4 7v10l8 4 8-4V7"/><path d="M12 11v10"/></svg>
           Produtos
         </a>
-        <a href="/admin/orders.html" class="sidebar__link">
+        <a class="sidebar__link" data-tab="orders">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
           Encomendas
         </a>
-        <a href="/admin/payments.html" class="sidebar__link">
+        <a class="sidebar__link" data-tab="payments">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
           Pagamentos
         </a>
-        <a href="/admin/users.html" class="sidebar__link">
+        <a class="sidebar__link" data-tab="users">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           Utilizadores
         </a>
-        <a href="/admin/analytics.html" class="sidebar__link">
+        <a class="sidebar__link" data-tab="analytics">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
           Analytics
         </a>
@@ -46,7 +46,7 @@
         <div class="sidebar__avatar">JC</div>
         <div>
           <div class="sidebar__user-name">Josué Cassiangulo</div>
-          <a href="/logout.php" class="sidebar__user-role">Sair</a>
+          <a href="/" class="sidebar__user-role">Sair</a>
         </div>
       </div>
     </aside>
@@ -61,8 +61,8 @@
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
           </button>
           <div>
-            <div class="topbar__title">Dashboard</div>
-            <div class="topbar__crumbs">Bem-vindo de volta, Josué</div>
+            <div class="topbar__title" data-page-title>Dashboard</div>
+            <div class="topbar__crumbs" data-page-crumbs>Bem-vindo de volta, Josué</div>
           </div>
         </div>
         <div class="topbar__right">
@@ -78,101 +78,303 @@
         </div>
       </header>
 
-      <!-- Content -->
-      <section class="content">
+      <!-- ====================== VIEW: OVERVIEW ====================== -->
+      <section class="content view is-active" data-view="overview">
         <div class="page-head">
           <div>
             <h1>Visão Geral</h1>
-            <p>Resumo do desempenho da loja nos últimos 30 dias.</p>
+            <p>Resumo do desempenho da loja.</p>
           </div>
-          <a href="/admin/product-edit.html" class="btn btn--primary">
+          <button class="btn btn--primary" data-action="new-product">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             Novo produto
-          </a>
+          </button>
         </div>
 
-        <!-- Quick stats -->
         <div class="stats">
           <div class="stat">
-            <div class="stat__label">Vendas</div>
-            <div class="stat__value">1.245.000 Kz</div>
-            <div class="stat__delta stat__delta--up">▲ 12,4% vs. mês anterior</div>
+            <div class="stat__label">Produtos</div>
+            <div class="stat__value" data-stat="products">0</div>
+            <div class="stat__delta stat__delta--up">▲ Catálogo ativo</div>
           </div>
           <div class="stat">
-            <div class="stat__label">Encomendas</div>
-            <div class="stat__value">387</div>
-            <div class="stat__delta stat__delta--up">▲ 8,1%</div>
+            <div class="stat__label">Em stock</div>
+            <div class="stat__value" data-stat="in-stock">0</div>
+            <div class="stat__delta stat__delta--up">▲ Disponíveis</div>
           </div>
           <div class="stat">
-            <div class="stat__label">Novos clientes</div>
-            <div class="stat__value">142</div>
-            <div class="stat__delta stat__delta--up">▲ 4,9%</div>
+            <div class="stat__label">Stock baixo</div>
+            <div class="stat__value" data-stat="low-stock">0</div>
+            <div class="stat__delta stat__delta--down">▼ Repor brevemente</div>
           </div>
           <div class="stat">
-            <div class="stat__label">Taxa de conversão</div>
-            <div class="stat__value">3,2%</div>
-            <div class="stat__delta stat__delta--down">▼ 0,4%</div>
+            <div class="stat__label">Valor de inventário</div>
+            <div class="stat__value" data-stat="inventory-value">0 Kz</div>
+            <div class="stat__delta stat__delta--up">▲ Total</div>
           </div>
         </div>
 
-        <!-- Recent orders -->
         <div class="card">
           <div class="card__head">
             <div class="card__title">Encomendas recentes</div>
-            <a href="/admin/orders.html" class="btn btn--ghost btn--sm">Ver todas →</a>
+            <a class="btn btn--ghost btn--sm" data-tab-link="orders">Ver todas →</a>
           </div>
           <div class="card__body card__body--flush">
             <div class="table-wrap">
               <table class="table">
                 <thead>
                   <tr>
-                    <th>Encomenda</th>
-                    <th>Cliente</th>
-                    <th>Total</th>
-                    <th>Pagamento</th>
-                    <th>Estado</th>
+                    <th>Encomenda</th><th>Cliente</th><th>Total</th><th>Pagamento</th><th>Estado</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- PHP loop placeholder
-                       <?php foreach ($recent_orders as $o): ?>
-                       ... <?php endforeach; ?> -->
-                  <tr>
-                    <td><strong>#10248</strong></td>
-                    <td>Maria Silva</td>
-                    <td>45.000 Kz</td>
-                    <td>BAI</td>
-                    <td><span class="badge badge--success">Pago</span></td>
-                  </tr>
-                  <tr>
-                    <td><strong>#10247</strong></td>
-                    <td>João Mateus</td>
-                    <td>28.500 Kz</td>
-                    <td>BFA</td>
-                    <td><span class="badge badge--warning">Pendente</span></td>
-                  </tr>
-                  <tr>
-                    <td><strong>#10246</strong></td>
-                    <td>Ana Costa</td>
-                    <td>72.000 Kz</td>
-                    <td>Express</td>
-                    <td><span class="badge badge--success">Pago</span></td>
-                  </tr>
-                  <tr>
-                    <td><strong>#10245</strong></td>
-                    <td>Pedro Mendes</td>
-                    <td>15.900 Kz</td>
-                    <td>SOL</td>
-                    <td><span class="badge badge--danger">Cancelada</span></td>
-                  </tr>
+                  <tr><td><strong>#10248</strong></td><td>Maria Silva</td><td>45.000 Kz</td><td>BAI</td><td><span class="badge badge--success">Pago</span></td></tr>
+                  <tr><td><strong>#10247</strong></td><td>João Mateus</td><td>28.500 Kz</td><td>BFA</td><td><span class="badge badge--warning">Pendente</span></td></tr>
+                  <tr><td><strong>#10246</strong></td><td>Ana Costa</td><td>72.000 Kz</td><td>Express</td><td><span class="badge badge--success">Pago</span></td></tr>
                 </tbody>
               </table>
             </div>
           </div>
         </div>
       </section>
+
+      <!-- ====================== VIEW: PRODUCTS ====================== -->
+      <section class="content view" data-view="products">
+        <div class="page-head">
+          <div>
+            <h1>Produtos</h1>
+            <p>Gere o catálogo, stock e disponibilidade dos produtos.</p>
+          </div>
+          <button class="btn btn--primary" data-action="new-product">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Adicionar produto
+          </button>
+        </div>
+
+        <div class="card">
+          <div class="card__head">
+            <div class="filters">
+              <div class="search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" placeholder="Procurar produtos..." data-product-search />
+              </div>
+              <select class="select" data-product-filter>
+                <option value="">Todos os estados</option>
+                <option value="in">Em stock</option>
+                <option value="low">Stock baixo</option>
+                <option value="out">Esgotado</option>
+              </select>
+            </div>
+            <div style="font-size:13px;color:var(--text-muted);font-weight:500;">
+              <span data-product-count>0</span> produtos
+            </div>
+          </div>
+          <div class="card__body card__body--flush">
+            <div class="table-wrap">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width:40%;">Produto</th>
+                    <th>Preço</th>
+                    <th>Stock</th>
+                    <th>Estado</th>
+                    <th style="text-align:right;">Ações</th>
+                  </tr>
+                </thead>
+                <tbody data-product-tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================== VIEW: ORDERS ====================== -->
+      <section class="content view" data-view="orders">
+        <div class="page-head">
+          <div><h1>Encomendas</h1><p>Acompanhe e gere as encomendas dos clientes.</p></div>
+        </div>
+        <div class="card">
+          <div class="card__body card__body--flush">
+            <div class="table-wrap">
+              <table class="table">
+                <thead><tr><th>Encomenda</th><th>Cliente</th><th>Data</th><th>Total</th><th>Pagamento</th><th>Estado</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>#10248</strong></td><td>Maria Silva</td><td>22/04/2026</td><td>45.000 Kz</td><td>BAI</td><td><span class="badge badge--success">Pago</span></td></tr>
+                  <tr><td><strong>#10247</strong></td><td>João Mateus</td><td>22/04/2026</td><td>28.500 Kz</td><td>BFA</td><td><span class="badge badge--warning">Pendente</span></td></tr>
+                  <tr><td><strong>#10246</strong></td><td>Ana Costa</td><td>21/04/2026</td><td>72.000 Kz</td><td>Express</td><td><span class="badge badge--success">Pago</span></td></tr>
+                  <tr><td><strong>#10245</strong></td><td>Pedro Mendes</td><td>21/04/2026</td><td>15.900 Kz</td><td>SOL</td><td><span class="badge badge--danger">Cancelada</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================== VIEW: PAYMENTS ====================== -->
+      <section class="content view" data-view="payments">
+        <div class="page-head"><div><h1>Pagamentos</h1><p>Métodos de pagamento configurados.</p></div></div>
+        <div class="card">
+          <div class="card__body card__body--flush">
+            <div class="table-wrap">
+              <table class="table">
+                <thead><tr><th>Método</th><th>Conta / Número</th><th>Titular</th><th>Estado</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Express</strong></td><td>976434263</td><td>—</td><td><span class="badge badge--success">Ativo</span></td></tr>
+                  <tr><td><strong>BFA</strong></td><td>000600004480099430175</td><td>JOSUÉ G. M. CASSIANGULO</td><td><span class="badge badge--success">Ativo</span></td></tr>
+                  <tr><td><strong>SOL</strong></td><td>004400003516825614177</td><td>JOSUÉ G. M. CASSIANGULO</td><td><span class="badge badge--success">Ativo</span></td></tr>
+                  <tr><td><strong>BCI</strong></td><td>5994710212</td><td>JOSUÉ G. M. CASSIANGULO</td><td><span class="badge badge--success">Ativo</span></td></tr>
+                  <tr><td><strong>BAI</strong></td><td>004000005757854410130</td><td>ELVIO TREIA CAMANHA MUNGONGO</td><td><span class="badge badge--success">Ativo</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================== VIEW: USERS ====================== -->
+      <section class="content view" data-view="users">
+        <div class="page-head"><div><h1>Utilizadores</h1><p>Clientes registados na plataforma.</p></div></div>
+        <div class="card"><div class="card__body card__body--flush"><div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Nome</th><th>Email</th><th>Telefone</th><th>Registado</th><th>Estado</th></tr></thead>
+            <tbody>
+              <tr><td>Maria Silva</td><td>maria@example.com</td><td>+244 923 000 111</td><td>15/04/2026</td><td><span class="badge badge--success">Ativo</span></td></tr>
+              <tr><td>João Mateus</td><td>joao@example.com</td><td>+244 924 222 333</td><td>10/04/2026</td><td><span class="badge badge--success">Ativo</span></td></tr>
+              <tr><td>Ana Costa</td><td>ana@example.com</td><td>+244 925 444 555</td><td>02/04/2026</td><td><span class="badge badge--success">Ativo</span></td></tr>
+            </tbody>
+          </table>
+        </div></div></div>
+      </section>
+
+      <!-- ====================== VIEW: ANALYTICS ====================== -->
+      <section class="content view" data-view="analytics">
+        <div class="page-head"><div><h1>Analytics</h1><p>Métricas-chave do negócio.</p></div></div>
+        <div class="stats">
+          <div class="stat"><div class="stat__label">Vendas (30d)</div><div class="stat__value">1.245.000 Kz</div><div class="stat__delta stat__delta--up">▲ 12,4%</div></div>
+          <div class="stat"><div class="stat__label">Visitas</div><div class="stat__value">8.420</div><div class="stat__delta stat__delta--up">▲ 6,8%</div></div>
+          <div class="stat"><div class="stat__label">Conversão</div><div class="stat__value">3,2%</div><div class="stat__delta stat__delta--down">▼ 0,4%</div></div>
+          <div class="stat"><div class="stat__label">Ticket médio</div><div class="stat__value">32.180 Kz</div><div class="stat__delta stat__delta--up">▲ 2,1%</div></div>
+        </div>
+        <div class="card"><div class="card__body"><p style="color:var(--text-muted);margin:0;">Gráficos detalhados estarão disponíveis em breve.</p></div></div>
+      </section>
     </main>
   </div>
+
+  <!-- ============================ MODAL: PRODUCT FORM ============================ -->
+  <div class="modal-backdrop" data-modal="product">
+    <div class="modal">
+      <div class="modal__head">
+        <div class="modal__title" data-modal-title>Novo produto</div>
+        <button class="modal__close" data-modal-close aria-label="Fechar">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <form data-product-form novalidate>
+        <input type="hidden" name="id" />
+        <div class="modal__body">
+          <div class="form-grid">
+            <div>
+              <div class="field">
+                <label>Nome do produto<span class="required">*</span></label>
+                <input name="name" type="text" class="input" placeholder="Ex.: Óleo de Massagem Relax" required maxlength="120" />
+              </div>
+              <div class="field">
+                <label>Slogan</label>
+                <input name="slogan" type="text" class="input" placeholder="Frase curta de marketing" maxlength="80" />
+              </div>
+              <div class="field">
+                <label>Descrição<span class="required">*</span></label>
+                <textarea name="description" class="textarea" placeholder="Descreva o produto, benefícios, modo de uso..." required></textarea>
+              </div>
+              <div class="field" style="margin-bottom:0;">
+                <label>Imagens (até 4)</label>
+                <div class="uploader">
+                  <!-- 4 slots -->
+                  <label class="upload-slot" data-upload-slot data-slot="0">
+                    <input type="file" accept="image/*" />
+                    <div class="upload-slot__placeholder">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                      Imagem principal
+                    </div>
+                    <div class="upload-slot__preview"></div>
+                    <button type="button" class="upload-slot__remove"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+                  </label>
+                  <label class="upload-slot" data-upload-slot data-slot="1">
+                    <input type="file" accept="image/*" />
+                    <div class="upload-slot__placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>Imagem 2</div>
+                    <div class="upload-slot__preview"></div>
+                    <button type="button" class="upload-slot__remove"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+                  </label>
+                  <label class="upload-slot" data-upload-slot data-slot="2">
+                    <input type="file" accept="image/*" />
+                    <div class="upload-slot__placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>Imagem 3</div>
+                    <div class="upload-slot__preview"></div>
+                    <button type="button" class="upload-slot__remove"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+                  </label>
+                  <label class="upload-slot" data-upload-slot data-slot="3">
+                    <input type="file" accept="image/*" />
+                    <div class="upload-slot__placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>Imagem 4</div>
+                    <div class="upload-slot__preview"></div>
+                    <button type="button" class="upload-slot__remove"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="field">
+                <label>Preço<span class="required">*</span></label>
+                <div class="input-prefix">
+                  <span>Kz</span>
+                  <input name="price" type="number" min="0" step="0.01" placeholder="0,00" required />
+                </div>
+              </div>
+              <div class="field">
+                <label>Preço comparativo</label>
+                <div class="input-prefix">
+                  <span>Kz</span>
+                  <input name="compare_price" type="number" min="0" step="0.01" placeholder="0,00" />
+                </div>
+                <span class="hint">Opcional · usado para mostrar desconto.</span>
+              </div>
+              <div class="field">
+                <label>Stock<span class="required">*</span></label>
+                <input name="stock" type="number" min="0" class="input" placeholder="0" required />
+                <span class="hint">≤ 10 unidades é considerado stock baixo.</span>
+              </div>
+              <div class="field" style="margin-bottom:0;">
+                <label>Estado</label>
+                <select name="status" class="select" style="width:100%;">
+                  <option value="active">Ativo</option>
+                  <option value="draft">Rascunho</option>
+                  <option value="archived">Arquivado</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn--secondary" data-modal-close>Cancelar</button>
+          <button type="submit" class="btn btn--primary" data-submit-label>Guardar produto</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================ MODAL: PRODUCT VIEW ============================ -->
+  <div class="modal-backdrop" data-modal="view-product">
+    <div class="modal modal--sm">
+      <div class="modal__head">
+        <div class="modal__title">Detalhes do produto</div>
+        <button class="modal__close" data-modal-close aria-label="Fechar">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal__body" data-view-product-body></div>
+    </div>
+  </div>
+
+  <!-- ============================ TOASTS ============================ -->
+  <div class="toast-stack" data-toast-stack></div>
 
   <script src="/admin/assets/admin.js"></script>
 </body>
