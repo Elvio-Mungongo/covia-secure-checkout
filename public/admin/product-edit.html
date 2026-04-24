@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editar Produto — COVIA Admin</title>
+  <link rel="stylesheet" href="/admin/assets/admin.css" />
+</head>
+<body>
+  <div class="admin-shell">
+
+    <!-- ============================ SIDEBAR ============================ -->
+    <aside class="sidebar" data-sidebar>
+      <div class="sidebar__brand">
+        <div class="sidebar__logo">C</div>
+        <div class="sidebar__title">COVIA<span>.</span></div>
+      </div>
+      <nav class="sidebar__nav">
+        <span class="sidebar__label">Geral</span>
+        <a href="/admin/dashboard.html" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+          Dashboard
+        </a>
+        <a href="/admin/products.html" class="sidebar__link is-active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7L12 3 4 7l8 4 8-4z"/><path d="M4 7v10l8 4 8-4V7"/><path d="M12 11v10"/></svg>
+          Produtos
+        </a>
+        <a href="/admin/orders.html" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Encomendas
+        </a>
+        <a href="/admin/payments.html" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          Pagamentos
+        </a>
+        <a href="/admin/users.html" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Utilizadores
+        </a>
+        <a href="/admin/analytics.html" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          Analytics
+        </a>
+      </nav>
+      <div class="sidebar__footer">
+        <div class="sidebar__avatar">JC</div>
+        <div>
+          <div class="sidebar__user-name">Josué Cassiangulo</div>
+          <a href="/logout.php" class="sidebar__user-role">Sair</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ============================== MAIN ============================== -->
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar__left">
+          <button class="icon-btn menu-toggle" data-menu-toggle aria-label="Menu">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div>
+            <div class="topbar__title">Novo produto</div>
+            <div class="topbar__crumbs">Admin / Produtos / Novo</div>
+          </div>
+        </div>
+        <div class="topbar__right">
+          <a href="/admin/products.html" class="btn btn--ghost">Cancelar</a>
+        </div>
+      </header>
+
+      <section class="content">
+        <div class="page-head">
+          <div>
+            <h1>Detalhes do produto</h1>
+            <p>Adicione informações claras e até 4 imagens de alta qualidade.</p>
+          </div>
+        </div>
+
+        <!--
+          POST handler placeholder:
+          <?php
+            // /admin/products/save.php
+            // if ($_SERVER['REQUEST_METHOD'] === 'POST') { ... validate, sanitize, move_uploaded_file ... }
+          ?>
+        -->
+        <form
+          action="/admin/products/save.php"
+          method="POST"
+          enctype="multipart/form-data"
+          class="form-grid"
+          novalidate
+        >
+          <!-- ===================== LEFT (main info) ===================== -->
+          <div class="card">
+            <div class="card__head">
+              <div class="card__title">Informações básicas</div>
+            </div>
+            <div class="card__body">
+              <input type="hidden" name="id" value="" />
+
+              <div class="field">
+                <label for="name">Nome do produto<span class="required">*</span></label>
+                <input id="name" name="name" type="text" class="input"
+                       placeholder="Ex.: Óleo de Massagem Relax" required maxlength="120" />
+              </div>
+
+              <div class="field">
+                <label for="slogan">Slogan</label>
+                <input id="slogan" name="slogan" type="text" class="input"
+                       placeholder="Frase curta de marketing (máx. 80 caracteres)" maxlength="80" />
+                <span class="hint">Aparece nos cartões de produto, abaixo do nome.</span>
+              </div>
+
+              <div class="field">
+                <label for="description">Descrição<span class="required">*</span></label>
+                <textarea id="description" name="description" class="textarea"
+                          placeholder="Descreva o produto, benefícios, modo de uso..." required></textarea>
+              </div>
+            </div>
+
+            <div class="card__head" style="border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+              <div class="card__title">Imagens do produto</div>
+              <span style="font-size:12px;color:var(--text-muted);">Até 4 imagens · JPG, PNG · max 5MB</span>
+            </div>
+            <div class="card__body">
+              <div class="uploader">
+                <!-- Slot 1 -->
+                <label class="upload-slot" data-upload-slot>
+                  <input type="file" name="images[]" accept="image/*" />
+                  <div class="upload-slot__placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                    Imagem principal
+                  </div>
+                  <div class="upload-slot__preview"></div>
+                  <button type="button" class="upload-slot__remove" aria-label="Remover">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  </button>
+                </label>
+                <!-- Slot 2 -->
+                <label class="upload-slot" data-upload-slot>
+                  <input type="file" name="images[]" accept="image/*" />
+                  <div class="upload-slot__placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                    Imagem 2
+                  </div>
+                  <div class="upload-slot__preview"></div>
+                  <button type="button" class="upload-slot__remove" aria-label="Remover">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  </button>
+                </label>
+                <!-- Slot 3 -->
+                <label class="upload-slot" data-upload-slot>
+                  <input type="file" name="images[]" accept="image/*" />
+                  <div class="upload-slot__placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                    Imagem 3
+                  </div>
+                  <div class="upload-slot__preview"></div>
+                  <button type="button" class="upload-slot__remove" aria-label="Remover">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  </button>
+                </label>
+                <!-- Slot 4 -->
+                <label class="upload-slot" data-upload-slot>
+                  <input type="file" name="images[]" accept="image/*" />
+                  <div class="upload-slot__placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                    Imagem 4
+                  </div>
+                  <div class="upload-slot__preview"></div>
+                  <button type="button" class="upload-slot__remove" aria-label="Remover">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  </button>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <a href="/admin/products.html" class="btn btn--secondary">Cancelar</a>
+              <button type="submit" class="btn btn--primary">Guardar produto</button>
+            </div>
+          </div>
+
+          <!-- ===================== RIGHT (price / stock) ===================== -->
+          <div>
+            <div class="card" style="margin-bottom:20px;">
+              <div class="card__head"><div class="card__title">Preço</div></div>
+              <div class="card__body">
+                <div class="field">
+                  <label for="price">Preço de venda<span class="required">*</span></label>
+                  <div class="input-prefix">
+                    <span>Kz</span>
+                    <input id="price" name="price" type="number" min="0" step="0.01"
+                           placeholder="0,00" required />
+                  </div>
+                </div>
+                <div class="field" style="margin-bottom:0;">
+                  <label for="compare_price">Preço comparativo</label>
+                  <div class="input-prefix">
+                    <span>Kz</span>
+                    <input id="compare_price" name="compare_price" type="number" min="0" step="0.01"
+                           placeholder="0,00" />
+                  </div>
+                  <span class="hint">Opcional · usado para mostrar desconto.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" style="margin-bottom:20px;">
+              <div class="card__head"><div class="card__title">Inventário</div></div>
+              <div class="card__body">
+                <div class="field" style="margin-bottom:0;">
+                  <label for="stock">Quantidade em stock<span class="required">*</span></label>
+                  <input id="stock" name="stock" type="number" min="0" class="input"
+                         placeholder="0" required />
+                  <span class="hint">≤ 10 unidades é considerado stock baixo.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card__head"><div class="card__title">Estado</div></div>
+              <div class="card__body">
+                <div class="field" style="margin-bottom:0;">
+                  <label for="status">Visibilidade</label>
+                  <select id="status" name="status" class="select" style="width:100%;">
+                    <option value="active">Ativo (visível na loja)</option>
+                    <option value="draft">Rascunho</option>
+                    <option value="archived">Arquivado</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script src="/admin/assets/admin.js"></script>
+</body>
+</html>

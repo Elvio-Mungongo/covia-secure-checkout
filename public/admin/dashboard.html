@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — COVIA Admin</title>
+  <link rel="stylesheet" href="/admin/assets/admin.css" />
+</head>
+<body>
+  <div class="admin-shell">
+
+    <!-- ============================ SIDEBAR ============================ -->
+    <aside class="sidebar" data-sidebar>
+      <div class="sidebar__brand">
+        <div class="sidebar__logo">C</div>
+        <div class="sidebar__title">COVIA<span>.</span></div>
+      </div>
+      <nav class="sidebar__nav">
+        <span class="sidebar__label">Geral</span>
+        <a href="/admin/dashboard.html" class="sidebar__link is-active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+          Dashboard
+        </a>
+        <a href="/admin/products.html" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7L12 3 4 7l8 4 8-4z"/><path d="M4 7v10l8 4 8-4V7"/><path d="M12 11v10"/></svg>
+          Produtos
+        </a>
+        <a href="/admin/orders.html" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Encomendas
+        </a>
+        <a href="/admin/payments.html" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          Pagamentos
+        </a>
+        <a href="/admin/users.html" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Utilizadores
+        </a>
+        <a href="/admin/analytics.html" class="sidebar__link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          Analytics
+        </a>
+      </nav>
+      <div class="sidebar__footer">
+        <div class="sidebar__avatar">JC</div>
+        <div>
+          <div class="sidebar__user-name">Josué Cassiangulo</div>
+          <a href="/logout.php" class="sidebar__user-role">Sair</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ============================== MAIN ============================== -->
+    <main class="main">
+
+      <!-- Topbar -->
+      <header class="topbar">
+        <div class="topbar__left">
+          <button class="icon-btn menu-toggle" data-menu-toggle aria-label="Menu">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div>
+            <div class="topbar__title">Dashboard</div>
+            <div class="topbar__crumbs">Bem-vindo de volta, Josué</div>
+          </div>
+        </div>
+        <div class="topbar__right">
+          <div class="search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" placeholder="Procurar..." />
+          </div>
+          <button class="icon-btn" aria-label="Notificações">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="icon-btn__dot"></span>
+          </button>
+          <a href="/" class="btn btn--secondary">Ver loja</a>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <section class="content">
+        <div class="page-head">
+          <div>
+            <h1>Visão Geral</h1>
+            <p>Resumo do desempenho da loja nos últimos 30 dias.</p>
+          </div>
+          <a href="/admin/product-edit.html" class="btn btn--primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Novo produto
+          </a>
+        </div>
+
+        <!-- Quick stats -->
+        <div class="stats">
+          <div class="stat">
+            <div class="stat__label">Vendas</div>
+            <div class="stat__value">1.245.000 Kz</div>
+            <div class="stat__delta stat__delta--up">▲ 12,4% vs. mês anterior</div>
+          </div>
+          <div class="stat">
+            <div class="stat__label">Encomendas</div>
+            <div class="stat__value">387</div>
+            <div class="stat__delta stat__delta--up">▲ 8,1%</div>
+          </div>
+          <div class="stat">
+            <div class="stat__label">Novos clientes</div>
+            <div class="stat__value">142</div>
+            <div class="stat__delta stat__delta--up">▲ 4,9%</div>
+          </div>
+          <div class="stat">
+            <div class="stat__label">Taxa de conversão</div>
+            <div class="stat__value">3,2%</div>
+            <div class="stat__delta stat__delta--down">▼ 0,4%</div>
+          </div>
+        </div>
+
+        <!-- Recent orders -->
+        <div class="card">
+          <div class="card__head">
+            <div class="card__title">Encomendas recentes</div>
+            <a href="/admin/orders.html" class="btn btn--ghost btn--sm">Ver todas →</a>
+          </div>
+          <div class="card__body card__body--flush">
+            <div class="table-wrap">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Encomenda</th>
+                    <th>Cliente</th>
+                    <th>Total</th>
+                    <th>Pagamento</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- PHP loop placeholder
+                       <?php foreach ($recent_orders as $o): ?>
+                       ... <?php endforeach; ?> -->
+                  <tr>
+                    <td><strong>#10248</strong></td>
+                    <td>Maria Silva</td>
+                    <td>45.000 Kz</td>
+                    <td>BAI</td>
+                    <td><span class="badge badge--success">Pago</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>#10247</strong></td>
+                    <td>João Mateus</td>
+                    <td>28.500 Kz</td>
+                    <td>BFA</td>
+                    <td><span class="badge badge--warning">Pendente</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>#10246</strong></td>
+                    <td>Ana Costa</td>
+                    <td>72.000 Kz</td>
+                    <td>Express</td>
+                    <td><span class="badge badge--success">Pago</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>#10245</strong></td>
+                    <td>Pedro Mendes</td>
+                    <td>15.900 Kz</td>
+                    <td>SOL</td>
+                    <td><span class="badge badge--danger">Cancelada</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/admin/assets/admin.js"></script>
+</body>
+</html>
