@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Heart, Menu, Search, ShoppingBag, User, X } from "lucide-react";
+import { Heart, LayoutDashboard, Menu, Search, ShoppingBag, User, X } from "lucide-react";
 import { useState } from "react";
 import { useCart } from "@/context/CartContext";
 import { Button } from "@/components/ui/button";
@@ -87,6 +87,17 @@ export const Header = () => {
                   {count}
                 </span>
               )}
+            </Button>
+            {/* Admin Dashboard quick access */}
+            <Button
+              asChild
+              size="sm"
+              className="hidden md:inline-flex ml-2 bg-foreground text-background hover:bg-foreground/90"
+            >
+              <a href="/admin/dashboard.html">
+                <LayoutDashboard className="h-4 w-4 mr-2" />
+                Admin Dashboard
+              </a>
             </Button>
             <Button
               variant="ghost"
