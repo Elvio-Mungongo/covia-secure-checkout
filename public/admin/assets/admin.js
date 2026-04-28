@@ -76,74 +76,73 @@
     payments: ["Pagamentos", "Admin / Pagamentos"],
      users: ["Utilizadores", "Admin / Utilizadores"],
      analytics: ["Analytics", "Admin / Analytics"],
-     admins: ["Administradores", "Admin / Administradores"],
-   // ---------- Admin Management ---------------------------------------------
-   const ADMINS_KEY = "covia_admins";
-    const defaultAdmins = [
-      { email: "comotastu65@gmail.com", password: "cassiangulo2026" },
-      { email: "admin@user.com", password: "admin" }
-    ];
- 
-   function loadAdmins() {
-     const raw = localStorage.getItem(ADMINS_KEY);
-     if (!raw) {
-       localStorage.setItem(ADMINS_KEY, JSON.stringify(defaultAdmins));
-       return defaultAdmins;
-     }
-     return JSON.parse(raw);
-   }
- 
-   function saveAdmins(list) {
-     localStorage.setItem(ADMINS_KEY, JSON.stringify(list));
-   }
- 
-   let admins = loadAdmins();
- 
-   function renderAdmins() {
-     const tbody = $("[data-admin-tbody]");
-     if (!tbody) return;
-     tbody.innerHTML = admins.map(a => `
-       <tr>
-         <td><strong>${escapeHtml(a.email)}</strong></td>
-         <td style="text-align:right;">
-          ${a.email !== 'admin@user.com' && a.email !== 'comotastu65@gmail.com' ? `
-             <button class="icon-btn" title="Eliminar" data-del-admin="${escapeHtml(a.email)}">
-               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
-             </button>
-           ` : ''}
-         </td>
-       </tr>
-     `).join("");
-   }
- 
-   $("[data-admin-tbody]")?.addEventListener("click", e => {
-     const btn = e.target.closest("[data-del-admin]");
-     if (!btn) return;
-     const email = btn.dataset.delAdmin;
-     if (confirm(`Remover acesso para ${email}?`)) {
-       admins = admins.filter(a => a.email !== email);
-       saveAdmins(admins);
-       renderAdmins();
-       toast("Administrador removido", "danger");
-     }
-   });
- 
-   $("[data-action='new-admin']")?.addEventListener("click", () => {
-     const email = prompt("Email do novo administrador:");
-     if (!email) return;
-     const password = prompt("Senha do novo administrador:");
-     if (!password) return;
-     
-     if (admins.some(a => a.email === email)) return toast("Admin já existe", "danger");
-     
-     admins.push({ email, password });
-     saveAdmins(admins);
-     renderAdmins();
-     toast("Administrador criado", "success");
-   });
- 
+    admins: ["Administradores", "Admin / Administradores"],
   };
 
+  // ---------- Admin Management ---------------------------------------------
+  const ADMINS_KEY = "covia_admins";
+  const defaultAdmins = [
+    { email: "comotastu65@gmail.com", password: "cassiangulo2026" },
+    { email: "admin@user.com", password: "admin" }
+  ];
+
+  function loadAdmins() {
+    const raw = localStorage.getItem(ADMINS_KEY);
+    if (!raw) {
+      localStorage.setItem(ADMINS_KEY, JSON.stringify(defaultAdmins));
+      return defaultAdmins;
+    }
+    return JSON.parse(raw);
+  }
+
+  function saveAdmins(list) {
+    localStorage.setItem(ADMINS_KEY, JSON.stringify(list));
+  }
+
+  let admins = loadAdmins();
+
+  function renderAdmins() {
+    const tbody = $("[data-admin-tbody]");
+    if (!tbody) return;
+    tbody.innerHTML = admins.map(a => `
+      <tr>
+        <td><strong>${escapeHtml(a.email)}</strong></td>
+        <td style="text-align:right;">
+          ${a.email !== 'admin@user.com' && a.email !== 'comotastu65@gmail.com' ? `
+            <button class="icon-btn" title="Eliminar" data-del-admin="${escapeHtml(a.email)}">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+            </button>
+          ` : ''}
+        </td>
+      </tr>
+    `).join("");
+  }
+
+  $("[data-admin-tbody]")?.addEventListener("click", e => {
+    const btn = e.target.closest("[data-del-admin]");
+    if (!btn) return;
+    const email = btn.dataset.delAdmin;
+    if (confirm(`Remover acesso para ${email}?`)) {
+      admins = admins.filter(a => a.email !== email);
+      saveAdmins(admins);
+      renderAdmins();
+      toast("Administrador removido", "danger");
+    }
+  });
+
+  $("[data-action='new-admin']")?.addEventListener("click", () => {
+    const email = prompt("Email do novo administrador:");
+    if (!email) return;
+    const password = prompt("Senha do novo administrador:");
+    if (!password) return;
+
+    if (admins.some(a => a.email === email)) return toast("Admin já existe", "danger");
+
+    admins.push({ email, password });
+    saveAdmins(admins);
+    renderAdmins();
+    toast("Administrador criado", "success");
+  });
   function setTab(name) {
     $$("[data-view]").forEach(v => v.classList.toggle("is-active", v.dataset.view === name));
     $$("[data-tab]").forEach(l => l.classList.toggle("is-active", l.dataset.tab === name));
