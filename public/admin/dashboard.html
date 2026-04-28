@@ -19,10 +19,37 @@
 
     <!-- ============================ SIDEBAR ============================ -->
     <aside class="sidebar" data-sidebar>
-      <div class="sidebar__brand">
-        <div class="sidebar__logo">C</div>
-        <div class="sidebar__title">COVIA<span>.</span></div>
-      </div>
+       <div class="sidebar__brand" style="padding: 16px 20px;">
+         <img src="/admin/assets/logo-covia.png" alt="COVIA" style="max-height: 40px; max-width: 100%;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+         <div class="sidebar__brand-fallback" style="display:none; align-items:center; gap:10px;">
+           <div class="sidebar__logo">C</div>
+           <div class="sidebar__title">COVIA<span>.</span></div>
+         </div>
+       </div>
+         <a class="sidebar__link" data-tab="admins">
+           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+           Administradores
+         </a>
+       <!-- ====================== VIEW: ADMINS ====================== -->
+       <section class="content view" data-view="admins">
+         <div class="page-head">
+           <div><h1>Administradores</h1><p>Gere as contas de acesso ao painel administrativo.</p></div>
+           <button class="btn btn--primary" data-action="new-admin">
+             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+             Novo Administrador
+           </button>
+         </div>
+         <div class="card">
+           <div class="card__body card__body--flush">
+             <div class="table-wrap">
+               <table class="table">
+                 <thead><tr><th>Email</th><th style="text-align:right;">Ações</th></tr></thead>
+                 <tbody data-admin-tbody></tbody>
+               </table>
+             </div>
+           </div>
+         </div>
+       </section>
       <nav class="sidebar__nav">
         <span class="sidebar__label">Geral</span>
         <a class="sidebar__link is-active" data-tab="overview">
