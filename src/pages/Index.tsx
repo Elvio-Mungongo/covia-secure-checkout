@@ -5,9 +5,10 @@ import { Hero } from "@/components/site/Hero";
 import { AnnouncementMarquee } from "@/components/site/AnnouncementMarquee";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Button } from "@/components/ui/button";
-import { products } from "@/data/products";
+ import { useProducts } from "@/hooks/useProducts";
 
-const Index = () => {
+ const Index = () => {
+   const { products } = useProducts();
   return (
     <SiteLayout>
       <Hero />

@@ -3,20 +3,27 @@ import { useState } from "react";
 import { Star, ShieldCheck, Truck, RotateCcw, Check, Minus, Plus, Zap } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Button } from "@/components/ui/button";
-import { getProduct, products } from "@/data/products";
+ import { useProducts } from "@/hooks/useProducts";
 import { ProductCard } from "@/components/site/ProductCard";
 import { useCart } from "@/context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { formatKz } from "@/lib/format";
 
-const Product = () => {
-  const { slug } = useParams();
-  const product = slug ? getProduct(slug) : undefined;
+ const Product = () => {
+   const { slug } = useParams();
+   const { products, getProductBySlug, loading } = useProducts();
+   const product = slug ? getProductBySlug(slug) : undefined;
   const [qty, setQty] = useState(1);
   const { add } = useCart();
   const navigate = useNavigate();
 
-  if (!product) return <Navigate to="/shop" replace />;
+   if (loading) return (
+     <SiteLayout>
+       <div className="container py-20 text-center">A carregar produto...</div>
+     </SiteLayout>
+   );
+ 
+   if (!product) return <Navigate to="/shop" replace />;
 
   const buyNow = () => {
     add(product, qty);

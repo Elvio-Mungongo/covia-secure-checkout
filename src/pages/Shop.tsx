@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { ProductCard } from "@/components/site/ProductCard";
-import { products } from "@/data/products";
+ import { useProducts } from "@/hooks/useProducts";
 
-const Shop = () => (
-  <SiteLayout>
+ const Shop = () => {
+   const { products, loading } = useProducts();
+ 
+   return (
+     <SiteLayout>
     <section className="bg-gradient-soft py-16 border-b border-border">
       <div className="container text-center">
         <p className="text-xs text-muted-foreground">
@@ -19,8 +22,10 @@ const Shop = () => (
       </div>
     </section>
     <section className="container py-12">
-      <div className="flex items-center justify-between mb-8">
-        <p className="text-sm text-muted-foreground">{products.length} produtos</p>
+       <div className="flex items-center justify-between mb-8">
+         <p className="text-sm text-muted-foreground">
+           {loading ? "A carregar..." : `${products.length} produtos`}
+         </p>
         <select className="text-sm border border-border rounded-md px-3 py-2 bg-background">
           <option>Mais vendidos</option>
           <option>Preço: menor → maior</option>
@@ -33,6 +38,7 @@ const Shop = () => (
       </div>
     </section>
   </SiteLayout>
-);
+   );
+ };
 
 export default Shop;
