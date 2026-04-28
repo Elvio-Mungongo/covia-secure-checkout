@@ -4,7 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Dashboard — COVIA</title>
-  <link rel="stylesheet" href="/admin/assets/admin.css" />
+   <link rel="stylesheet" href="/admin/assets/admin.css" />
+   <script>
+     if (localStorage.getItem('covia_admin_logged_in') !== 'true') {
+       window.location.href = '/login.html';
+     }
+   </script>
 </head>
 <body>
   <div class="admin-shell">
@@ -45,9 +50,9 @@
       <div class="sidebar__footer">
         <div class="sidebar__avatar">JC</div>
         <div>
-          <div class="sidebar__user-name">Josué Cassiangulo</div>
-          <a href="/" class="sidebar__user-role">Sair</a>
-        </div>
+           <div class="sidebar__user-name">Josué Cassiangulo</div>
+           <a href="#" class="sidebar__user-role" id="logoutBtn">Sair</a>
+         </div>
       </div>
     </aside>
 
