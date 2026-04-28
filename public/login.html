@@ -149,8 +149,12 @@
            const email = document.getElementById('email').value;
            const password = document.getElementById('password').value;
            
-           if (email === 'comotastu65@gmail.com' && password === 'cassiangulo2026') {
+           const admins = JSON.parse(localStorage.getItem('covia_admins') || '[{"email":"comotastu65@gmail.com","password":"cassiangulo2026"},{"email":"admin","password":"admin"}]');
+           const found = admins.find(a => a.email === email && a.password === password);
+           
+           if (found) {
              localStorage.setItem('covia_admin_logged_in', 'true');
+             localStorage.setItem('covia_current_admin', JSON.stringify({ email: found.email }));
              window.location.href = '/admin/dashboard.html';
            } else {
              alert('Credenciais incorretas. Por favor, tente novamente.');
