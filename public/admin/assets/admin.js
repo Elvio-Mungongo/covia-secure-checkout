@@ -406,55 +406,6 @@
      window.location.href = '/login.html';
    });
  
-    // ---------- Chatbot --------------------------------------------------------
-    const chatbotToggle = document.getElementById('chatbotToggle');
-    const chatbotWindow = document.getElementById('chatbotWindow');
-    const chatbotClose = document.getElementById('chatbotClose');
-    const chatbotForm = document.getElementById('chatbotForm');
-    const chatbotInput = document.getElementById('chatbotInput');
-    const chatbotMessages = document.getElementById('chatbotMessages');
-
-    chatbotToggle?.addEventListener('click', () => chatbotWindow.classList.toggle('is-open'));
-    chatbotClose?.addEventListener('click', () => chatbotWindow.classList.remove('is-open'));
-
-    const responses = {
-      "produtos": "No menu 'Produtos', você pode adicionar, editar ou remover itens do seu catálogo, além de controlar o stock.",
-      "stock": "O sistema alerta automaticamente quando um produto tem 10 ou menos unidades (Stock Baixo).",
-      "vendas": "Pode consultar o total de vendas e ticket médio na aba 'Analytics'.",
-      "encomendas": "Na aba 'Encomendas', você consegue ver o estado dos pagamentos e detalhes de cada pedido.",
-      "pagamentos": "Aceitamos pagamentos via Express, BFA, SOL, BCI e BAI. Configure as contas na aba 'Pagamentos'.",
-      "ajuda": "Eu posso ajudar com dúvidas sobre produtos, encomendas, stock e pagamentos. O que deseja saber?",
-      "default": "Interessante! Para questões mais específicas sobre o negócio, recomendo consultar os relatórios na aba Analytics ou a lista de encomendas."
-    };
-
-    function addMessage(text, side) {
-      const msg = document.createElement('div');
-      msg.className = `chat-msg chat-msg--${side}`;
-      msg.textContent = text;
-      chatbotMessages.appendChild(msg);
-      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-    }
-
-    chatbotForm?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const text = chatbotInput.value.trim().toLowerCase();
-      if (!text) return;
-
-      addMessage(chatbotInput.value, 'user');
-      chatbotInput.value = '';
-
-      setTimeout(() => {
-        let reply = responses.default;
-        for (let key in responses) {
-          if (text.includes(key)) {
-            reply = responses[key];
-            break;
-          }
-        }
-        addMessage(reply, 'bot');
-      }, 600);
-    });
-
     // ---------- Init -----------------------------------------------------------
     renderAdmins();
     renderProducts();
