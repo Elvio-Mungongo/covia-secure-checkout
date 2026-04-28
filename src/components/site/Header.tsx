@@ -40,12 +40,7 @@ export const Header = () => {
       <div className="bg-background/95 backdrop-blur border-b border-border">
         <div className="container flex h-20 items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <div className="h-10 w-10 rounded-full bg-primary text-primary-foreground grid place-items-center font-display font-bold">
-              C
-            </div>
-            <span className="font-display text-2xl font-bold tracking-tight text-primary">
-              COVIA<span className="text-accent">.</span>
-            </span>
+            <img src="/logo.jpg" alt="COVIA Logo" className="h-12 w-auto object-contain" />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8">
