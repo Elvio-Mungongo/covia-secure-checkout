@@ -334,6 +334,13 @@
     b.addEventListener("click", () => openProductForm(null))
   );
 
-  // ---------- Init -----------------------------------------------------------
+   // ---------- Logout ---------------------------------------------------------
+   document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
+     e.preventDefault();
+     localStorage.removeItem('covia_admin_logged_in');
+     window.location.href = '/login.html';
+   });
+ 
+   // ---------- Init -----------------------------------------------------------
   renderProducts();
 })();
