@@ -149,7 +149,7 @@
            const email = document.getElementById('email').value;
            const password = document.getElementById('password').value;
            
-           const admins = JSON.parse(localStorage.getItem('covia_admins') || '[{"email":"comotastu65@gmail.com","password":"cassiangulo2026"},{"email":"admin","password":"admin"}]');
+           const admins = JSON.parse(localStorage.getItem('covia_admins') || '[{"email":"comotastu65@gmail.com","password":"cassiangulo2026"},{"email":"admin@user.com","password":"admin"}]');
            const found = admins.find(a => a.email === email && a.password === password);
            
            if (found) {
