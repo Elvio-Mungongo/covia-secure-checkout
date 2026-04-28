@@ -3,32 +3,110 @@
    Pure CSS, no frameworks. Ready to plug into PHP views.
    ========================================================================== */
 
-:root {
-  --bg: #f6f6f7;
-  --surface: #ffffff;
-  --surface-2: #fafafa;
-  --border: #e5e7eb;
-  --border-strong: #d1d5db;
-  --text: #111827;
-  --text-muted: #6b7280;
-  --text-soft: #9ca3af;
-  --primary: #111827;
-  --primary-hover: #1f2937;
-  --accent: #2563eb;
-  --success: #16a34a;
-  --warning: #d97706;
-  --danger: #dc2626;
-  --success-bg: #dcfce7;
-  --warning-bg: #fef3c7;
-  --danger-bg: #fee2e2;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
-  --radius: 10px;
-  --radius-sm: 6px;
-  --sidebar-w: 240px;
-  --topbar-h: 64px;
-}
+ :root {
+   --bg: #fafafa;
+   --surface: #ffffff;
+   --surface-2: #f4f4f5;
+   --border: #e4e4e7;
+   --border-strong: #d4d4d8;
+   --text: #09090b;
+   --text-muted: #71717a;
+   --text-soft: #a1a1aa;
+   --primary: #18181b;
+   --primary-hover: #27272a;
+   --accent: #111827;
+   --success: #10b981;
+   --warning: #f59e0b;
+   --danger: #ef4444;
+   --success-bg: #ecfdf5;
+   --warning-bg: #fffbeb;
+   --danger-bg: #fef2f2;
+   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+   --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+   --radius: 10px;
+   --radius-sm: 8px;
+   --sidebar-w: 260px;
+   --topbar-h: 64px;
+   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+ }
+ 
+ @media (prefers-color-scheme: dark) {
+   :root {
+     --bg: #09090b;
+     --surface: #09090b;
+     --surface-2: #18181b;
+     --border: #27272a;
+     --border-strong: #3f3f46;
+     --text: #fafafa;
+     --text-muted: #a1a1aa;
+     --text-soft: #71717a;
+     --primary: #fafafa;
+     --primary-hover: #f4f4f5;
+     --accent: #fafafa;
+     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+   }
+ }
+ 
+ body {
+   font-family: var(--font-sans);
+   letter-spacing: -0.011em;
+ }
+ 
+ h1, h2, h3, h4 {
+   letter-spacing: -0.025em;
+   font-weight: 700;
+ }
+ 
+ .sidebar__link {
+   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+ }
+ 
+ .sidebar__link.is-active {
+   background: var(--surface-2);
+   color: var(--text);
+   box-shadow: inset 0 0 0 1px var(--border);
+ }
+ 
+ .stat {
+   transition: transform 0.2s ease, box-shadow 0.2s ease;
+ }
+ 
+ .stat:hover {
+   transform: translateY(-2px);
+   box-shadow: var(--shadow);
+ }
+ 
+ .btn {
+   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+ }
+ 
+ .btn--primary {
+   background: var(--primary);
+   color: var(--bg);
+ }
+ 
+ .btn--primary:hover {
+   opacity: 0.9;
+   transform: translateY(-1px);
+ }
+ 
+ .card {
+   border-radius: var(--radius);
+   border: 1px solid var(--border);
+   overflow: hidden;
+ }
+ 
+ .input, .textarea, .select {
+   border-radius: var(--radius-sm);
+   border: 1px solid var(--border);
+   transition: border-color 0.2s ease, ring 0.2s ease;
+ }
+ 
+ .input:focus, .textarea:focus {
+   border-color: var(--primary);
+   box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--primary);
+ }
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
